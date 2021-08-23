@@ -2,7 +2,7 @@
   <div class="home">
     <i class="el-icon-eleme"></i> HOME
     <div>{{ $store.state }}</div>
-    <el-button type="primary" @click="change">primary</el-button>
+    <el-button type="primary" @click="change" size="small">修改数据</el-button>
   </div>
 </template>
 <script lang="ts">
@@ -16,6 +16,7 @@ export default class Home extends Vue {
     this.$store.commit('RESET_GLOBAL_STATE', {
       key: 'basic',
       value: {
+        time: Date.now(),
         token: `${Math.random().toString(36).substr(2)}`
       }
     })

@@ -7,7 +7,7 @@
 作为独立的一个项目，脱离主项目仍然可以独立运行
 
 ## 配置方式
-### 主应用安装qiankun
+### 主应用配置
 ```shell
 cnpm install qiankun -S
 ```
@@ -46,9 +46,7 @@ new Vue({
 }).$mount('#framework')
 ```
 
-
-
-### 子应用暴露生命周期钩子
+### 子应用配置
 
 `./public-path`
 
@@ -59,7 +57,6 @@ if (window.__POWERED_BY_QIANKUN__) {
   __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__
 }
 ```
-
 
 `main.ts`
 
@@ -112,7 +109,6 @@ export async function unmount ():Promise<void> {
 
 ```
 
-
 `vue.config.js`
 
 ```
@@ -137,8 +133,6 @@ module.exports = {
 }
 ```
 
-
-
 `router.ts`
 
 ```javascript
@@ -149,12 +143,11 @@ const router = new VueRouter({
 })
 ```
 
-
-
 ## 公共组件
 
 ### CDN 方式
-### props 方式
+主应用/子应用引入资源文件，子应用可以单独运行和开发。
+### Props 方式
 #### 主应用
 
 `./components/index.ts`
@@ -175,8 +168,6 @@ export default {
 }
 ```
 
-
-
 `main.ts`
 
 ```
@@ -196,12 +187,17 @@ registerMicroApps([
 ])
 ```
 
-
-
 #### 子应用
 
 ```
 function render (props: any) {
   // 安装公共组件
   Vue.use(props.components)
+}
 ```
+
+## 数据通信
+> 主应用下发全局（登录/用户/码表/等）信息给子应用，子应用应保持相对独立运行和开发，减少与主应用的耦合性。
+
+1. 将主应用的 store 作为 props 传递给子应用
+2. 子应用 mounted 阶段，存入子应用的 store 以供使用
