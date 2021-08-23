@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    Home
+    <i class="el-icon-eleme"></i> HOME
     <div>{{ $store.state }}</div>
     <el-button type="primary" @click="change">primary</el-button>
   </div>

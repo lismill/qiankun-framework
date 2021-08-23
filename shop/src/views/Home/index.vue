@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <i class="el-icon-eleme"></i> MEMBER-HOME
+    <i class="el-icon-eleme"></i> SHOP-HOME
     <div>
       {{ $store.state }}
     </div>

@@ -4,7 +4,8 @@
       <section
         v-for="router in [
           { to: '/', name: '框架服务 - 首页' },
-          { to: '/member', name: '会员服务 - 首页' }
+          { to: '/member', name: '会员服务 - 首页' },
+          { to: '/shop', name: '商品服务 - 首页' }
         ]"
         :key="router.to">
         <router-link :to="router.to">

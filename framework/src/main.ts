@@ -19,6 +19,15 @@ registerMicroApps([
     props: {
       store
     }
+  },
+  {
+    name: 'shop',
+    entry: '//localhost:10002',
+    container: '#app-viewport',
+    activeRule: '/shop',
+    props: {
+      store
+    }
   }
 ])
 // qiankun - 启动
